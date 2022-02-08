@@ -8,7 +8,7 @@ ApplicationWindow {
   visible: true
 
   //title of the application
-  title: qsTr("Spielerei")
+  title: qsTr("LearningQML")
   width: 1280
   height: 960
 
