@@ -272,33 +272,52 @@ quote the fights historical; from Marathon to Waterloo in order categorical.'
         }
       }
     }
+
+    // ------------------------------------- //
     Row {
+      spacing: 6
+      height: 400
       Item {
+        width: 200
+        height: parent.height
+        // Model //
         ListModel {
           id: nameModel
           ListElement {
-            name: "Alice"
+            name: "Alice Schwarzer"
+            wat: "XX"
           }
           ListElement {
-            name: "Bob"
+            name: "Bob Marley"
+            wat: "XY"
           }
           ListElement {
-            name: "Jane"
+            name: "Jane Austen"
+            wat: "XX"
           }
           ListElement {
-            name: "Harry"
+            name: "Harry Potter"
+            wat: "XY"
           }
           ListElement {
-            name: "Wendy"
+            name: "This is a Wendy's, Sir!"
+            wat: "Message"
           }
         }
+        // Delegate //
         Component {
           id: nameDelegate
+
           Text {
+            // set width explicitly, else the highlight
+            // would shrink
+            width: parent.width
             text: name
-            font.pixelSize: 24
+            color: "Teal"
+            font.pixelSize: 20
           }
         }
+
         ListView {
           anchors.fill: parent
           clip: true
@@ -307,12 +326,28 @@ quote the fights historical; from Marathon to Waterloo in order categorical.'
           header: bannercomponent
           footer: Rectangle {
             width: parent.width
-            height: 30
+            height: 12
             gradient: clubcolors
           }
           highlight: Rectangle {
+            //            width: parent.width
             width: parent.width
             color: "lightgray"
+          }
+          section {
+            property: "wat"
+            criteria: ViewSection.FullString
+            delegate: Rectangle {
+              color: "#b0dfb0"
+              width: parent.width
+              height: childrenRect.height + 4
+              Text {
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.pixelSize: 16
+                font.bold: true
+                text: section
+              }
+            }
           }
         }
 
@@ -322,7 +357,7 @@ quote the fights historical; from Marathon to Waterloo in order categorical.'
           Rectangle {
             id: banner
             width: parent.width
-            height: 50
+            height: 40
             gradient: clubcolors
             border {
               color: "#9EDDF2"
@@ -331,7 +366,7 @@ quote the fights historical; from Marathon to Waterloo in order categorical.'
             Text {
               anchors.centerIn: parent
               text: "Club Members"
-              font.pixelSize: 32
+              font.pixelSize: 24
             }
           }
         }
@@ -342,11 +377,76 @@ quote the fights historical; from Marathon to Waterloo in order categorical.'
             color: "#8EE2FE"
           }
           GradientStop {
-            position: 0.66
-            color: "#7ED2EE"
+            position: 0.5
+            color: "#DDFFDD"
           }
         }
       }
+
+
+
+      ListModel {
+        id: contactModel
+
+          ListElement {
+              name: "Bill Smith"
+              number: "555 3264"
+          }
+          ListElement {
+              name: "John Brown"
+              number: "555 8426"
+          }
+          ListElement {
+              name: "Sam Wise"
+              number: "555 0473"
+          }
+          ListElement {
+            name: "Bill Smith"
+            number: "555 3264"
+          }
+          ListElement {
+            name: "John Brown"
+            number: "555 8426"
+          }
+          ListElement {
+            name: "Sam Wise"
+            number: "555 0473"
+          }
+          ListElement {
+            name: "Bill Smith"
+            number: "555 3264"
+          }
+          ListElement {
+            name: "John Brown"
+            number: "555 8426"
+          }
+          ListElement {
+            name: "Sam Wise"
+            number: "555 0473"
+          }
+      }
+
+      ScrollView {
+        id: scrollView
+
+      Column {
+
+
+
+      ListView {
+          width: 180; height: 100
+
+          model: contactModel
+          delegate: Text {
+              font.pixelSize: 20
+              text: name + ": " + number
+          }
+      }
+
+      }
+
+      }
+
     }
   }
 }
