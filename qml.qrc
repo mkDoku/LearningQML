@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>LineEdit.qml</file>
+        <file>CheckBoxBetter.qml</file>
+        <file>CheckBoxSignal.qml</file>
     </qresource>
 </RCC>

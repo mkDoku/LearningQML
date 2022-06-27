@@ -277,6 +277,7 @@ quote the fights historical; from Marathon to Waterloo in order categorical.'
     Row {
       spacing: 6
       height: 400
+
       Item {
         width: 200
         height: parent.height
@@ -383,70 +384,121 @@ quote the fights historical; from Marathon to Waterloo in order categorical.'
         }
       }
 
-
-
       ListModel {
         id: contactModel
 
-          ListElement {
-              name: "Bill Smith"
-              number: "555 3264"
-          }
-          ListElement {
-              name: "John Brown"
-              number: "555 8426"
-          }
-          ListElement {
-              name: "Sam Wise"
-              number: "555 0473"
-          }
-          ListElement {
-            name: "Bill Smith"
-            number: "555 3264"
-          }
-          ListElement {
-            name: "John Brown"
-            number: "555 8426"
-          }
-          ListElement {
-            name: "Sam Wise"
-            number: "555 0473"
-          }
-          ListElement {
-            name: "Bill Smith"
-            number: "555 3264"
-          }
-          ListElement {
-            name: "John Brown"
-            number: "555 8426"
-          }
-          ListElement {
-            name: "Sam Wise"
-            number: "555 0473"
-          }
+        ListElement {
+          name: "Bill Smith"
+          number: "555 3264"
+        }
+        ListElement {
+          name: "John Brown"
+          number: "555 8426"
+        }
+        ListElement {
+          name: "Sam Wise"
+          number: "555 0473"
+        }
+        ListElement {
+          name: "Bill Smith"
+          number: "555 3264"
+        }
+        ListElement {
+          name: "John Brown"
+          number: "555 8426"
+        }
+        ListElement {
+          name: "Sam Wise"
+          number: "555 0473"
+        }
+        ListElement {
+          name: "Bill Smith"
+          number: "555 3264"
+        }
+        ListElement {
+          name: "John Brown"
+          number: "555 8426"
+        }
+        ListElement {
+          name: "Sam Wise"
+          number: "555 0473"
+        }
       }
 
-      ScrollView {
-        id: scrollView
+      //      ScrollView {
+      //        id: scrollView
 
-      Column {
+      //        Column {
 
+      //          ListView {
+      //            width: 180
+      //            height: 100
 
+      //            model: contactModel
+      //            delegate: Text {
+      //              font.pixelSize: 20
+      //              text: name + ": " + number
+      //            }
+      //          }
+      //        }
+      //      }
 
-      ListView {
-          width: 180; height: 100
+      // https://www.youtube.com/watch?v=qzSNju-h1pk
+      Rectangle {
+        width: 400
+        height: 200
+        color: "lightblue"
 
-          model: contactModel
-          delegate: Text {
-              font.pixelSize: 20
-              text: name + ": " + number
+        LineEdit {
+          id: lineEdit
+          anchors.horizontalCenter: parent.horizontalCenter
+          anchors.top: parent.top
+          anchors.topMargin: 16
+        }
+
+        Text {
+          anchors.top: lineEdit.bottom
+          anchors.topMargin: 12
+          anchors.left: parent.left
+          anchors.leftMargin: 16
+          text: "<b>Summary:</b> " + lineEdit.text
+        }
+      }
+
+      Item {
+        width: 400
+        height: parent.height
+
+        Rectangle {
+          anchors.left: parent.left
+          anchors.right: parent.right
+          anchors.top: parent.top
+          anchors.bottom: parent.verticalCenter
+          color: "lightblue"
+
+          CheckBoxSignal {
+            anchors.centerIn: parent
+            onChecked: checkValue ? parent.color = "red"
+                                  : parent.color = "lightblue"
           }
-      }
+        }
 
-      }
+        Rectangle {
+          anchors.left: parent.left
+          anchors.right: parent.right
+          anchors.top: parent.verticalCenter
+          anchors.bottom: parent.bottom
 
-      }
+          color: checkBoxBetter.checked ? "red" : "lightblue"
 
+          CheckBoxBetter {
+            id: checkBoxBetter
+            anchors.centerIn: parent
+
+            checked: false
+          }
+        }
+      }
     }
   }
 }
